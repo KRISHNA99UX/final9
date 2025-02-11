@@ -1,84 +1,86 @@
-// Music Control
-const musicToggle = document.getElementById('musicToggle');
-const bgMusic = document.getElementById('bgMusic');
-let isMusicPlaying = false;
-
-musicToggle.addEventListener('click', () => {
-    if (isMusicPlaying) {
-        bgMusic.pause();
-        musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-    } else {
-        bgMusic.play();
-        musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-    }
-    isMusicPlaying = !isMusicPlaying;
-});
-
 // Countdown Timer
-const countdownDate = new Date('June 15, 2024 18:00:00').getTime();
+const countdown = () => {
+    const targetDate = new Date('February 14, 2025 11:00:00').getTime();
+    
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// Image Carousel
-const carousel = document.querySelector('.carousel-container');
-const images = carousel.getElementsByTagName('img');
-let currentIndex = 0;
-
-function showImage(index) {
-    const offset = -index * 100;
-    carousel.style.transform = `translateX(${offset}%)`;
-}
-
-document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-});
-
-document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-});
-
-// RSVP Form
-document.getElementById('rsvpForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your RSVP!');
-    e.target.reset();
-});
-
-// Scroll Animation
-const observerOptions = {
-    threshold: 0.2
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = "Event Started!";
+            return;
         }
-    });
-}, observerOptions);
 
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(section);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerHTML = days;
+        document.getElementById('hours').innerHTML = hours;
+        document.getElementById('minutes').innerHTML = minutes;
+        document.getElementById('seconds').innerHTML = seconds;
+    }, 1000);
+}
+
+// RSVP Handling
+const handleRSVP = () => {
+    const confirmed = confirm("Thank you for RSVPing! We look forward to seeing you!\n\nConfirm your attendance?");
+    if (confirmed) {
+        alert("RSVP confirmed! You'll receive a reminder email closer to the event.");
+    }
+}
+
+// Add these new interactions
+// Particle Animation
+function createParticles() {
+    const container = document.querySelector('.sparkles');
+    for(let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(sparkle);
+    }
+}
+
+// Interactive Mouse Trail
+document.addEventListener('mousemove', (e) => {
+    const trail = document.createElement('div');
+    trail.className = 'mouse-trail';
+    trail.style.left = e.pageX + 'px';
+    trail.style.top = e.pageY + 'px';
+    document.body.appendChild(trail);
+    setTimeout(() => trail.remove(), 1000);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    countdown();
+    createParticles();
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Scroll Animation Trigger
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('section').forEach((section) => {
+        observer.observe(section);
+    });
 }); 

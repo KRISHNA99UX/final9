@@ -3,81 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior Farewell 2024</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Farewell 2025 - Class 12</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="music-control">
-        <button id="musicToggle"><i class="fas fa-music"></i></button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="floating-text">
+                <h1 class="animate-pop">Farewell 2025</h1>
+                <div class="gradient-border"></div>
+            </div>
+            <p class="hero-subtitle">Govt. Boys Hr. Secondary School Surajpur (CG)</p>
+            <a href="#details" class="cta-button">Event Details</a>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section id="details" class="section event-details">
+        <div class="section-title">
+            <h2><span class="highlight">Event</span> Details</h2>
+        </div>
+        <div class="details-container">
+            <div class="detail-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>February 14, 2025</h3>
+            </div>
+            <div class="detail-card">
+                <i class="fas fa-clock"></i>
+                <h3>11:00 AM Onwards</h3>
+            </div>
+            <div class="detail-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>School Courtyard</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <div id="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>Days</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>Hours</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>Minutes</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>Seconds</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invitation Message -->
+    <section class="invitation-section">
+        <div class="invitation-content">
+            <h2>A Message From Class 11</h2>
+            <p class="invitation-text">
+                Dear Seniors,<br>
+                As you prepare to embark on new journeys, we want to celebrate the legacy you're leaving behind. 
+                Join us for an unforgettable farewell filled with memories, laughter, and heartfelt moments. 
+                You've inspired us, and now it's our turn to show our gratitude.
+            </p>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <button class="rsvp-button" onclick="handleRSVP()">
+            Confirm Your Presence
+            <div class="rsvp-overlay"></div>
+        </button>
+    </section>
+
+    <!-- Add this just before the closing body tag -->
+    <div class="credit">Website crafted by Krishna</div>
+
+    <!-- Add Sparkle Elements -->
+    <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
     </div>
 
-    <header class="welcome-section">
-        <h1 class="fade-in">Farewell Class of 2024</h1>
-        <p class="fade-in">Join us as we celebrate our incredible journey together</p>
-    </header>
-
-    <section class="event-details">
-        <div class="detail-card">
-            <i class="fas fa-calendar"></i>
-            <h2>Date & Time</h2>
-            <p>June 15, 2024</p>
-            <p>6:00 PM Onwards</p>
-        </div>
-        <div class="detail-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h2>Venue</h2>
-            <p>Grand Ballroom</p>
-            <p>Crystal Palace Hotel</p>
-        </div>
-    </section>
-
-    <section class="countdown">
-        <h2>Time Until We Meet</h2>
-        <div id="timer">
-            <div><span id="days">00</span><br>Days</div>
-            <div><span id="hours">00</span><br>Hours</div>
-            <div><span id="minutes">00</span><br>Minutes</div>
-            <div><span id="seconds">00</span><br>Seconds</div>
-        </div>
-    </section>
-
-    <section class="gallery">
-        <h2>Our Memories</h2>
-        <div class="carousel">
-            <button class="carousel-btn prev">❮</button>
-            <div class="carousel-container">
-                <img src="image1.jpg" alt="Memory 1">
-                <img src="image2.jpg" alt="Memory 2">
-                <img src="image3.jpg" alt="Memory 3">
-                <img src="image4.jpg" alt="Memory 4">
-            </div>
-            <button class="carousel-btn next">❯</button>
-        </div>
-    </section>
-
-    <section class="rsvp">
-        <h2>RSVP</h2>
-        <form id="rsvpForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <select required>
-                <option value="">Will you attend?</option>
-                <option value="yes">Yes, I'll be there!</option>
-                <option value="no">Sorry, I can't make it</option>
-            </select>
-            <button type="submit">Send RSVP</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>We can't wait to see you there!</p>
-    </footer>
-
-    <audio id="bgMusic" loop>
-        <source src="background-music.mp3" type="audio/mpeg">
-    </audio>
-    
     <script src="script.js"></script>
 </body>
 </html> 
