@@ -1,0 +1,106 @@
+:root {
+    --royal-blue: #1e3799;
+    --gold: #ffd700;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--royal-blue);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#musicToggle {
+    background: var(--royal-blue);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#musicToggle:hover {
+    transform: scale(1.1);
+}
+
+.welcome-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(30, 55, 153, 0.8), rgba(30, 55, 153, 0.8)),
+                url('background.jpg') center/cover;
+    color: var(--white);
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.event-details {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.detail-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ... Additional CSS for other sections ... */
+
+@media (max-width: 768px) {
+    .event-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-card {
+        width: 90%;
+    }
+
+    #timer {
+        flex-wrap: wrap;
+    }
+
+    #timer div {
+        min-width: 80px;
+    }
+
+    .carousel-container img {
+        height: 300px;
+    }
+} 

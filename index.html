@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Farewell 2024</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="music-control">
+        <button id="musicToggle"><i class="fas fa-music"></i></button>
+    </div>
+
+    <header class="welcome-section">
+        <h1 class="fade-in">Farewell Class of 2024</h1>
+        <p class="fade-in">Join us as we celebrate our incredible journey together</p>
+    </header>
+
+    <section class="event-details">
+        <div class="detail-card">
+            <i class="fas fa-calendar"></i>
+            <h2>Date & Time</h2>
+            <p>June 15, 2024</p>
+            <p>6:00 PM Onwards</p>
+        </div>
+        <div class="detail-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h2>Venue</h2>
+            <p>Grand Ballroom</p>
+            <p>Crystal Palace Hotel</p>
+        </div>
+    </section>
+
+    <section class="countdown">
+        <h2>Time Until We Meet</h2>
+        <div id="timer">
+            <div><span id="days">00</span><br>Days</div>
+            <div><span id="hours">00</span><br>Hours</div>
+            <div><span id="minutes">00</span><br>Minutes</div>
+            <div><span id="seconds">00</span><br>Seconds</div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Our Memories</h2>
+        <div class="carousel">
+            <button class="carousel-btn prev">❮</button>
+            <div class="carousel-container">
+                <img src="image1.jpg" alt="Memory 1">
+                <img src="image2.jpg" alt="Memory 2">
+                <img src="image3.jpg" alt="Memory 3">
+                <img src="image4.jpg" alt="Memory 4">
+            </div>
+            <button class="carousel-btn next">❯</button>
+        </div>
+    </section>
+
+    <section class="rsvp">
+        <h2>RSVP</h2>
+        <form id="rsvpForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <select required>
+                <option value="">Will you attend?</option>
+                <option value="yes">Yes, I'll be there!</option>
+                <option value="no">Sorry, I can't make it</option>
+            </select>
+            <button type="submit">Send RSVP</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>We can't wait to see you there!</p>
+    </footer>
+
+    <audio id="bgMusic" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
